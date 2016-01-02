@@ -7,7 +7,6 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.RectF;
 import android.graphics.Region;
 import android.os.Build;
 import android.util.AttributeSet;
@@ -172,8 +171,6 @@ public class WaveView extends View {
             }
         }
     }
-
-    private RectF mRectF;
 
     @Override
     protected void onDraw(Canvas canvas) {

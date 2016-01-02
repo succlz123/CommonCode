@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 //        mCustomCanvasView = (CustomCanvasView) findViewById(R.id.root_canvas);
 
 
+
+
     }
 
     @Override
