@@ -1,7 +1,6 @@
-package org.succlz123.commoncode;
+package org.succlz123.commoncode.circle;
 
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;
 import android.graphics.Canvas;
@@ -15,17 +14,19 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
-import android.support.annotation.ColorInt;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DrawableRes;
 import android.util.AttributeSet;
 import android.widget.ImageView;
+
+import androidx.annotation.ColorInt;
+import androidx.annotation.ColorRes;
+import androidx.annotation.DrawableRes;
+import androidx.appcompat.widget.AppCompatImageView;
 
 /**
  * Created by succlz123 on 15/12/27.
  */
-public class CircleImageView extends ImageView{
-    private static final ScaleType SCALE_TYPE = ScaleType.CENTER_CROP;
+public class CircleImageView extends AppCompatImageView {
+    private static final ImageView.ScaleType SCALE_TYPE = ImageView.ScaleType.CENTER_CROP;
 
     private static final Bitmap.Config BITMAP_CONFIG = Bitmap.Config.ARGB_8888;
     private static final int COLORDRAWABLE_DIMENSION = 2;

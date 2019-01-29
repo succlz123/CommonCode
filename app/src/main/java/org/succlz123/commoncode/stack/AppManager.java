@@ -1,4 +1,6 @@
-package org.succlz123.commoncode;
+package org.succlz123.commoncode.stack;
+
+import org.succlz123.commoncode.base.BaseActivity;
 
 import android.app.Activity;
 import android.app.ActivityManager;

@@ -13,15 +13,6 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
-
-import rx.Observable;
-import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
-import rx.functions.Func1;
-import rx.schedulers.Schedulers;
-import rx.subscriptions.CompositeSubscription;
 
 /**
  * Created by succlz123 on 15/12/30.
@@ -68,7 +59,7 @@ public class WaveView extends View {
     private BitmapShader mBitmapShader;
 
     private boolean isMeasured = false;
-    protected CompositeSubscription mCompositeSubscription = new CompositeSubscription();
+//    protected CompositeSubscription mCompositeSubscription = new CompositeSubscription();
 
     public WaveView(Context context) {
         this(context, null);
@@ -226,7 +217,7 @@ public class WaveView extends View {
     @Override
     protected void onDetachedFromWindow() {
         super.onDetachedFromWindow();
-        mCompositeSubscription.unsubscribe();
+//        mCompositeSubscription.unsubscribe();
     }
 
     private void resetFrontPoints() {
@@ -244,36 +235,11 @@ public class WaveView extends View {
     }
 
     private void onStart() {
-        Subscription subscription = Observable.interval(20, TimeUnit.MILLISECONDS)
-                .subscribeOn(Schedulers.io())
-                .filter(new Func1<Long, Boolean>() {
-                    @Override
-                    public Boolean call(Long aLong) {
-                        mFrontMoveLength += FRONT_SPEED;
-                        mBackMoveLength += BACK_SPEED;
-
-                        for (int i = 0, size = mFrontPointsList.size(); i < size; i++) {
-                            mFrontPointsList.get(i).x += FRONT_SPEED;
-                            mBackPointsList.get(i).x += BACK_SPEED;
-                        }
-
-                        if (mFrontMoveLength >= mWaveWidth) {
-                            // 波浪右移超过一个完整波浪后复位
-                            mFrontMoveLength = 0;
-                            resetFrontPoints();
-                        }
-                        if (mBackMoveLength >= mWaveWidth) {
-                            // 波浪右移超过一个完整波浪后复位
-                            mBackMoveLength = 0;
-                            resetBackPoints();
-                        }
-                        return true;
-                    }
-                })
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Action1<Long>() {
-                    @Override
-                    public void call(Long aLong) {
+//        Subscription subscription = Observable.interval(20, TimeUnit.MILLISECONDS)
+//                .subscribeOn(Schedulers.io())
+//                .filter(new Func1<Long, Boolean>() {
+//                    @Override
+//                    public Boolean call(Long aLong) {
 //                        mFrontMoveLength += FRONT_SPEED;
 //                        mBackMoveLength += BACK_SPEED;
 //
@@ -292,14 +258,39 @@ public class WaveView extends View {
 //                            mBackMoveLength = 0;
 //                            resetBackPoints();
 //                        }
-                        invalidate();
-                    }
-                }, new Action1<Throwable>() {
-                    @Override
-                    public void call(Throwable throwable) {
-                        throwable.toString();
-                    }
-                });
-        mCompositeSubscription.add(subscription);
+//                        return true;
+//                    }
+//                })
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(new Action1<Long>() {
+//                    @Override
+//                    public void call(Long aLong) {
+////                        mFrontMoveLength += FRONT_SPEED;
+////                        mBackMoveLength += BACK_SPEED;
+////
+////                        for (int i = 0, size = mFrontPointsList.size(); i < size; i++) {
+////                            mFrontPointsList.get(i).x += FRONT_SPEED;
+////                            mBackPointsList.get(i).x += BACK_SPEED;
+////                        }
+////
+////                        if (mFrontMoveLength >= mWaveWidth) {
+////                            // 波浪右移超过一个完整波浪后复位
+////                            mFrontMoveLength = 0;
+////                            resetFrontPoints();
+////                        }
+////                        if (mBackMoveLength >= mWaveWidth) {
+////                            // 波浪右移超过一个完整波浪后复位
+////                            mBackMoveLength = 0;
+////                            resetBackPoints();
+////                        }
+//                        invalidate();
+//                    }
+//                }, new Action1<Throwable>() {
+//                    @Override
+//                    public void call(Throwable throwable) {
+//                        throwable.toString();
+//                    }
+//                });
+//        mCompositeSubscription.add(subscription);
     }
 }

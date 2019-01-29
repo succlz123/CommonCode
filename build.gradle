@@ -1,16 +1,31 @@
+import com.android.build.gradle.BaseExtension
+
 buildscript {
     repositories {
         jcenter()
+        google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.5.0'
+        classpath 'com.android.tools.build:gradle:3.2.1'
     }
 }
 
 allprojects {
     repositories {
         jcenter()
+        google()
     }
+    afterEvaluate {
+        def android = project.extensions.findByName('android') as BaseExtension
+        android?.compileOptions {
+            sourceCompatibility JavaVersion.VERSION_1_8
+            targetCompatibility JavaVersion.VERSION_1_8
+        }
+    }
+}
+
+task javadoc(type: Javadoc) {
+    options.encoding = "utf-8"
 }
 
 task clean(type: Delete) {

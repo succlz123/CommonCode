@@ -1,8 +1,7 @@
-package org.succlz123.commoncode;
+package org.succlz123.commoncode.base;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -10,10 +9,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
 /**
  * Created by succlz123 on 16/1/6.
  */
-public class BaseFragment extends android.support.v4.app.Fragment {
+public class BaseFragment extends Fragment {
     //created
     @Override
     public void onAttach(Context context) {

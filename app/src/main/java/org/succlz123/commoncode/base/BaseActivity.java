@@ -1,8 +1,11 @@
-package org.succlz123.commoncode;
+package org.succlz123.commoncode.base;
+
+import org.succlz123.commoncode.Singleton;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * Created by succlz123 on 16/1/6.

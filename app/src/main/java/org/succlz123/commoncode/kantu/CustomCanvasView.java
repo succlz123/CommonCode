@@ -1,4 +1,6 @@
-package org.succlz123.commoncode;
+package org.succlz123.commoncode.kantu;
+
+import org.succlz123.commoncode.R;
 
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -58,7 +60,7 @@ public class CustomCanvasView extends ImageView {
         super.onSizeChanged(w, h, oldw, oldh);
 
         BitmapFactory.Options options = new BitmapFactory.Options();
-        options.inJustDecodeBounds = false;
+            options.inJustDecodeBounds = false;
         BitmapFactory.decodeResource(getResources(), R.drawable.liu, options);
 
         options.inSampleSize = calculateInSampleSize(options, w, h);
